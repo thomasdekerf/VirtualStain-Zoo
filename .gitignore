@@ -1,2 +1,7 @@
 /outputs/
 /data/
+/all_tb_logs/
+/.hydra/
+/.idea/
+/Finland_repo/
+__pycache__/
