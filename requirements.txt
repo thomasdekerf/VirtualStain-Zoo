@@ -1,0 +1,8 @@
+hydra-core
+pillow
+omegaconf
+pytorch_lightning
+torch
+torchvision
+torchmetrics>=1.0.0
+tensorboard

@@ -1,0 +1,51 @@
+hydra:
+  run:
+#    dir: outputs/${experiment.name}_${now:%Y%m%d_%H%M%S}
+    dir: .
+
+experiment:
+  name: "pix2pix"
+  number: 1
+  description: "Baseline pix2pix with synthetic tissue pairs and PSNR/SSIM metrics."
+
+dataset:
+  _target_: datasets.pair_folder_datamodule.PairFolderDataModule
+  data_root: C:/Users/thoma/PycharmProjects/VirtualStain-Zoo/data
+  img_size: 256
+  batch_size: 4
+  num_workers: 4
+
+model:
+  _target_: core.registry.get_model
+  name: Pix2Pix
+  lr: 0.0002
+  lambda_L1: 100.0
+  ngf: 64
+  ndf: 64
+  n_layers_D: 3
+  input_nc: 3
+  output_nc: 3
+
+
+
+trainer:
+  max_epochs: 20
+  accelerator: "cpu"
+  devices: 1
+  precision: 32
+  log_every_n_steps: 5
+
+
+metrics:
+  psnr: true
+  ssim: true
+  fid: false
+  lpips: false
+
+image_logging:
+  enable: true
+  n_images: 4        # How many validation images to log per epoch
+
+logger:
+  tensorboard: true
+#  wandb: false

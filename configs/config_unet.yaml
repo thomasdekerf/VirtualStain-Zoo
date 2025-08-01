@@ -1,6 +1,7 @@
 hydra:
   run:
-    dir: outputs/${experiment.name}_${now:%Y%m%d_%H%M%S}
+#    dir: outputs/${experiment.name}_${now:%Y%m%d_%H%M%S}
+    dir: .
 
 experiment:
   name: "unet_baseline"
@@ -32,6 +33,10 @@ metrics:
   ssim: true
   fid: false
   lpips: false
+
+image_logging:
+  enable: true
+  n_images: 4        # How many validation images to log per epoch
 
 logger:
   tensorboard: true
