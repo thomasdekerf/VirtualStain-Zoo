@@ -5,9 +5,8 @@ import datasets.pair_folder_datamodule as dm_mod
 from core.metrics_and_image_callback import MetricsAndImageCallback
 
 # train.py  (top of file)
-# @hydra.main(version_base='1.1', config_path="configs", config_name="config_pix2pix")
-# @hydra.main(version_base='1.1', config_path="configs", config_name="config_unet")
-@hydra.main(version_base='1.1', config_path="configs", config_name="config_cGAN")
+# Default config is passed at runtime via --config-name
+@hydra.main(config_path='configs', config_name=None)
 def main(cfg):
     print("Experiment:", cfg.experiment.name)
     print("Description:", cfg.experiment.description)
